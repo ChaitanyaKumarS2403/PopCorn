@@ -75,7 +75,7 @@ body {
 }
 
 /* --- INTERACTIVE EFFECTS (Updated to include nav-link) --- */
-a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link {
+a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link, .github-card {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .btn:not(:disabled):hover {
@@ -114,12 +114,13 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link {
 
 /* Active Tab Styles */
 .navbar-nav .nav-link.active {
+    background-color: transparent !important; /* Ensure no unwanted background */
     /* LIGHT MODE: Now Red */
     color: var(--color-accent) !important; 
     font-weight: bold;
     border-bottom: 3px solid var(--color-accent); 
     /* Glow effect using the Red RGB values */
-    box-shadow: 0 0 15px rgba(220, 53, 69, 0.8); 
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.5); /* Reduced glow */
     border-radius: 0;
 }
 
@@ -127,14 +128,16 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link {
     /* DARK MODE OVERRIDE (Custom CSS): Red Accent */
     color: var(--color-accent) !important; 
     border-bottom: 3px solid var(--color-accent); 
-    box-shadow: 0 0 15px rgba(220, 53, 69, 0.8); /* Red Glow */
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.5); /* Reduced glow */
 }
 
 
 /* --- 2. HERO SECTION & MAIN GLASS PANEL (ULTRA-REALISTIC 3D) --- */
 .hero-backdrop {
+    /* Reverted to original height calculation */
     height: calc(100vh - 80px);
     min-height: 550px; 
+    padding-bottom: 0;
 }
 .glass-panel {
     background: var(--glass-fill); 
@@ -176,6 +179,43 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link {
     color: var(--color-text-main);
     padding: 2rem;
 }
+
+/* --- NEW: GITHUB CARD STYLES (Credits Tab) --- */
+.github-card {
+    background: var(--glass-fill); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); 
+    border-radius: 15px;
+    height: 100%; /* Important for equal height in the row */
+    
+    /* Apply base 3D effect from glass-card-sm */
+    box-shadow: 
+        0 10px 20px 0 var(--glass-shadow-outer), 
+        inset 0 0 0 1px var(--glass-border), 
+        inset 3px 3px 10px 0 var(--glass-shadow-inner-dark), 
+        inset -3px -3px 10px 0 var(--glass-shadow-inner-light); 
+    color: var(--color-text-main);
+    
+    /* Animation for hover */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* ADDED: Apply floating animation for the "breathing" effect */
+    animation: floatAnimation 3s ease-in-out infinite alternate; 
+    
+    /* Ensure title text is visible */
+    color: var(--color-text-main) !important;
+}
+
+/* Hover effect on the card */
+.github-card:hover {
+    transform: translateY(-8px); /* Lift the card more significantly */
+    /* Stronger, more colorful shadow on hover using accent */
+    box-shadow: 
+        0 18px 40px rgba(220, 53, 69, 0.6), /* Accent red glow */
+        0 10px 20px 0 var(--glass-shadow-outer), 
+        inset 0 0 0 1px var(--glass-border); 
+}
+
 
 /* --- 4. BROWSE TAB: MODERN UPLOAD BLOCK --- */
 #drop-zone {
@@ -233,7 +273,7 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link {
 /* --- SCREEN TAB MODERN/DIM UI --- */
 .screen-background {
     background: #000000; 
-    min-height: calc(100vh - 80px); 
+    min-height: calc(100vh - 80px); /* Fill space below nav */
     padding: 0; 
     display: flex;
     flex-direction: column;
@@ -312,9 +352,9 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link {
 /* NEW: Inner span to hold the text and apply the animation */
 .screen-header .screen-title.scrolling span {
     display: inline-block; /* Essential for the animation */
-    /* CHANGE 3: Slower speed and reduced reappearance time (25s) */
+    /* CHANGE 3: Slower speed (25s) */
     animation: scrollText 25s linear infinite;
-    /* CHANGE 4: Reduce initial distance/gap (now 10vw instead of 100%) */
+    /* CHANGE 4: Reduced initial distance/gap (now 10vw) */
     padding-left: 10vw; /* Start the text just off the screen to the right with a small gap */
 }
 
@@ -481,7 +521,6 @@ body:not(.dark-mode) #warningToastBody {
     color: var(--color-accent) !important;
     /* text-shadow: 0 0 3px rgba(255, 255, 255, 0.7); REMOVED */
 }
-
 
 /* Adjust the close button */
 .toast .btn-close {

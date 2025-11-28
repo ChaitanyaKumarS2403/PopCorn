@@ -3,14 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeContent = document.getElementById('home-content');
     const browseContent = document.getElementById('browse-content');
     const screenContent = document.getElementById('screen-content');
+    // NEW: Credits Content
+    const creditsContent = document.getElementById('credits-content'); 
     const mediaPlayerContainer = document.getElementById('media-player-container');
     const screenTitle = document.getElementById('screenTitle'); 
-    const tabContents = [homeContent, browseContent, screenContent];
+    
+    // UPDATED: Include creditsContent in tabContents
+    const tabContents = [homeContent, browseContent, screenContent, creditsContent]; 
 
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     const chooseMovieButton = document.getElementById('chooseMovieButton');
     const themeToggle = document.getElementById('theme-toggle'); 
     const themeIcon = document.getElementById('theme-icon'); 
+    
+    // NEW: GitHub Nav Link
+    const githubNavLink = document.getElementById('github-nav-link');
 
     // Browse Tab Elements
     const mediaFileInput = document.getElementById('mediaFileInput');
@@ -47,11 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
         warningToastBootstrap.show();
     }
     
-    // Helper function for navigation link activation
+    // Helper function for navigation link activation (UPDATED)
     function getNavItem(contentElement) {
         if (contentElement === homeContent) return document.querySelector('.navbar-nav a[href*="Home"]');
         if (contentElement === browseContent) return document.querySelector('.navbar-nav a[href*="Browse"]');
         if (contentElement === screenContent) return document.querySelector('.navbar-nav a[href*="Screen"]');
+        // NEW: The credits content is activated by the GitHub link
+        if (contentElement === creditsContent) return document.getElementById('github-nav-link'); 
         return null;
     }
     
@@ -183,11 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // 5. Navigation Event Listeners
+    // 5. Navigation Event Listeners (SIMPLIFIED)
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const linkText = e.target.textContent.trim();
+            // CHANGE: Use e.currentTarget to get the content of the <a> tag reliably, 
+            // even if the click was on the icon (<i>) inside.
+            const clickedLink = e.currentTarget;
+            const linkText = clickedLink.textContent.trim().replace(/\s{2,}/g, ' '); // Use the link's text content
+            const linkId = clickedLink.id;
             
             if (linkText === 'Home') showTab(homeContent);
             else if (linkText === 'Browse') showTab(browseContent);
@@ -199,6 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     closeMediaBtn.classList.add('d-none');
                 }
                 showTab(screenContent);
+            }
+            // SIMPLIFIED: GitHub/Credits Tab Logic - Just switches to Credits tab.
+            else if (linkId === 'github-nav-link') {
+                showTab(creditsContent);
             }
         });
     });
