@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PopCorn</title>
+
+    <link rel="icon" type="image/png" href="img/PopCorn.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="light-mode"> 
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid">
+        
+        <a class="navbar-brand fs-3 fw-bold d-flex align-items-center" href="#">
+            <img src="img/PopCorn.png" alt="PopCorn Logo" style="height: 30px; margin-right: 8px;">
+            <span>
+                <span class="text-info">Pop</span>Corn
+            </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavRight" aria-controls="navbarNavRight" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavRight">
+          
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Browse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Screen</a>
+            </li>
+            <li class="nav-item ms-lg-3 d-flex align-items-center">
+              <div class="form-check form-switch" style="min-height: 1.5rem; margin-right: 0.5rem;">
+                <input class="form-check-input" type="checkbox" role="switch" id="theme-toggle" title="Toggle Dark/Light Mode" style="cursor: pointer;">
+              </div>
+              <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container-fluid p-0">
+
+        <div id="home-content" class="tab-content">
+            <div class="hero-backdrop d-flex justify-content-center align-items-center">
+                
+                <div class="glass-panel text-center p-md-5 p-4">
+                    <h1 class="mb-3 display-3 fw-bold">
+                        <img src="img/PopCorn.png" alt="PopCorn Logo" style="height: 60px; margin-right: 8px;"><span class="text-info">Pop</span>Corn
+                    </h1>
+                    <p class="lead fs-5 mb-4">
+                        A seamless, aesthetic platform for streaming your local media files directly in your browser to your loved ones, to spend the night✨🍿.
+                    </p>
+                    <p class="text-secondary-light">
+                       Supported formats: MP4, MKV, MOV, MP3
+                    </p>
+                    <a id="chooseMovieButton" class="btn btn-info btn-lg fw-bold mt-4" href="#" role="button">
+                        Start Streaming Now
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div id="browse-content" class="tab-content d-none container pt-5">
+            <h2 class="mb-4 text-center section-title">Select Your Media File</h2>
+            
+            <div class="glass-card-sm mx-auto p-4" style="max-width: 800px;">
+                
+                <div id="drop-zone" class="d-flex flex-column align-items-center justify-content-center p-5 mb-4">
+                    <i class="fa-solid fa-cloud-arrow-up display-4 mb-3 text-info"></i>
+                    <p class="mb-1 fw-bold">Drag and drop a media file here</p>
+                    <p class="text-secondary-light mb-4">or click to browse local files</p>
+                    <button class="btn btn-outline-info btn-sm" id="browseFileBtn">Browse Files</button>
+                    <input type="file" id="mediaFileInput" accept=".mp4, .mp3, .mov, .mkv" style="display: none;">
+                </div>
+
+                <div class="card-footer-glass text-center p-3 text-secondary-light">
+                    Select a file to begin streaming immediately.
+                </div>
+            </div>
+        </div>
+
+        <div id="screen-content" class="tab-content d-none screen-background position-relative">
+            <div class="screen-header">
+                <h2 class="screen-title text-white" id="screenTitle"></h2>
+                <button id="closeMediaBtn" class="btn shadow-lg d-none" title="Close Media and return to Browse">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="media-player-wrapper" class="d-flex justify-content-center align-items-center">
+                 <div id="media-player-container" class="rounded overflow-hidden">
+                    <h3 class="text-white text-center p-5">Select a file from the Browse tab to begin.</h3>
+                </div>
+                </div>
+        </div>
+
+    </div> 
+    
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        
+        <div id="fileSelectedToast" class="toast toast-glass" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex align-items-center justify-content-between p-2">
+                <div class="d-flex align-items-center me-2 text-success-accent">
+                    <i class="fa-solid fa-check me-2"></i>
+                    <strong class="me-auto fw-bold">Success</strong>
+                </div>
+                <div class="flex-grow-1 text-end px-2" id="toastFileName"></div>
+                <button type="button" class="btn-close ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div id="warningToast" class="toast toast-glass" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex align-items-center justify-content-between p-2">
+                <div class="d-flex align-items-center me-2 text-warning-accent">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                    <strong class="me-auto fw-bold" id="warningToastTitle">Warning</strong>
+                </div>
+                <div class="flex-grow-1 text-end px-2" id="warningToastBody"></div>
+                <button type="button" class="btn-close ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
