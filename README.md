@@ -51,4 +51,4 @@ This application is entirely client-side, meaning it runs directly in your brows
 
 ## 📜 License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the [**MIT License**](https://github.com/ChaitanyaKumarS2403/PopCorn?tab=MIT-1-ov-file).
