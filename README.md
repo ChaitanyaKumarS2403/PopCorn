@@ -1,6 +1,9 @@
 # 🍿 PopCorn
 
-![Project Status: Completed](https://img.shields.io/badge/Status-Completed-success)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Plyr](https://img.shields.io/badge/Plyr-Video%20Player-black)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
 **PopCorn** is a modern, client-side web application designed for streaming local media files (videos and audio) directly in the browser. It combines a clean, aesthetic "glassmorphism" user interface with the powerful **Plyr** library to provide a seamless and feature-rich playback experience for your personal media library.
