@@ -10,15 +10,13 @@
 
 ---
 
-### 🌐 Live Access (Easiest Method)
+### 🌐 Live Access
 
 Access the latest stable version of PopCorn directly on GitHub Pages:
 [PopCorn Official Site](https://chaitanyakumars2403.github.io/PopCorn/)
-<p align="left">
-        <a href="https://chaitanyakumars2403.github.io/PopCorn/">
-            <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" height="30">
-        </a>
-</p>
+<a href="https://chaitanyakumars2403.github.io/PopCorn/">
+        <img src="https://github.com/ChaitanyaKumarS2403/imgHost/blob/main/PopCorn/popcorn_poster.png">
+</a>
 
 ---
 ### How to Stream
