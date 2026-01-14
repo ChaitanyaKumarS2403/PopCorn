@@ -15,7 +15,7 @@
 Access the latest stable version of PopCorn directly on GitHub Pages:
 [PopCorn Official Site](https://chaitanyakumars2403.github.io/PopCorn/)
 <a href="https://chaitanyakumars2403.github.io/PopCorn/">
-        <img src="https://github.com/ChaitanyaKumarS2403/imgHost/blob/main/PopCorn/popcorn_poster.png">
+        <img src="https://github.com/ChaitanyaKumarS2403/assets/blob/main/projects_repo/PopCorn/popcorn_poster.png">
 </a>
 
 ---
