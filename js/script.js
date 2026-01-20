@@ -163,7 +163,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    if (chromeExtension) chromeExtension.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const link = "chrome://flags/#enable-experimental-web-platform-features";
+        navigator.clipboard.writeText(link);
+
+        alert(
+            "The link has been copied to your clipboard.\n\n" +
+            "Paste it into Chrome's address bar and enable:\n" +
+            "Enable Experimental Web Platform Features"
+        );
+    });
+
     if (chooseMovieButton) chooseMovieButton.addEventListener('click', (e) => { e.preventDefault(); showTab(browseContent); });
+    
 
     if (closeMediaBtn) {
         closeMediaBtn.addEventListener('click', () => {
