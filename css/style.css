@@ -69,6 +69,7 @@ body {
 }
 .section-title {
     color: var(--color-text-main);
+    margin-top: 7rem;
 }
 .text-secondary-light {
     color: var(--color-text-secondary);
@@ -99,36 +100,34 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link, .git
     color: var(--color-accent) !important;
 }
 
+/* --- UPDATED NAV LINK STYLES --- */
+
+/* Base style for all nav links */
 .navbar-nav .nav-link {
     color: var(--color-text-main) !important;
     position: relative; 
-    padding-bottom: 0.5rem; 
+    padding: 8px 20px !important; /* Increased padding for the rounded pill look */
+    margin: 0 5px; /* Add spacing between buttons */
+    border-radius: 50px; /* Makes the background rounded/pill-shaped */
+    transition: all 0.3s ease;
+    border-bottom: none !important; /* Removing the old underline style */
 }
 
-/* NEW: Hover Animation for Nav Links */
+/* Hover State: Subtle transparent red background */
 .navbar-nav .nav-link:hover:not(.active) {
-    color: var(--color-accent) !important; /* Change color to accent */
-    transform: translateY(-2px); /* Subtle lift */
-    text-shadow: 0 0 5px rgba(220, 53, 69, 0.5); /* Gentle red glow */
+    background-color: rgba(220, 53, 69, 0.1) !important; /* Very faint red */
+    color: var(--color-accent) !important;
+    transform: translateY(-1px);
 }
 
-/* Active Tab Styles */
-.navbar-nav .nav-link.active {
-    background-color: transparent !important; /* Ensure no unwanted background */
-    /* LIGHT MODE: Now Red */
-    color: var(--color-accent) !important; 
-    font-weight: bold;
-    border-bottom: 3px solid var(--color-accent); 
-    /* Glow effect using the Red RGB values */
-    box-shadow: 0 0 8px rgba(220, 53, 69, 0.5); /* Reduced glow */
-    border-radius: 0;
-}
-
+/* Active State: Highlighted rounded button with transparent red */
+.navbar-nav .nav-link.active,
 .dark-mode .navbar-nav .nav-link.active {
-    /* DARK MODE OVERRIDE (Custom CSS): Red Accent */
-    color: var(--color-accent) !important; 
-    border-bottom: 3px solid var(--color-accent); 
-    box-shadow: 0 0 8px rgba(220, 53, 69, 0.5); /* Reduced glow */
+    background-color: rgba(220, 53, 69, 0.2) !important; /* Semi-transparent red */
+    color: var(--color-accent) !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15); /* Soft glow */
+    border-bottom: none !important; /* Ensure underline is removed */
 }
 
 
@@ -178,6 +177,8 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link, .git
         inset -3px -3px 10px 0 var(--glass-shadow-inner-light); 
     color: var(--color-text-main);
     padding: 2rem;
+
+    margin-top: 2rem;
 }
 
 /* --- NEW: GITHUB CARD STYLES (Credits Tab) --- */
@@ -358,11 +359,8 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link, .git
     padding-left: 10vw; /* Start the text just off the screen to the right with a small gap */
 }
 
-/* Style for the 'X' close button */
+/* Style for the 'X' close button and Subtitle button */
 .screen-header .btn {
-    position: absolute; 
-    right: 30px; 
-    top: 0; 
     pointer-events: auto; 
     background: none; 
     border: none; 
@@ -375,13 +373,17 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link, .git
     justify-content: center;
     align-items: center;
     border-radius: 50%; 
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     box-shadow: none !important; 
 }
 
 .screen-header .btn:hover {
     background-color: rgba(255, 255, 255, 0.1); 
     transform: none; 
+}
+
+#addSubtitleBtn:hover, #trackSettingsBtn:hover {
+    color: var(--color-accent);
 }
 
 
@@ -435,6 +437,16 @@ a, button, .glass-panel, .glass-card-sm, #drop-zone, .navbar-nav .nav-link, .git
 /* Ensure progress bar color is correctly set by the main variable */
 .plyr--full-ui input[type=range] {
     color: var(--color-accent); 
+}
+
+/* NEW: Plyr Caption Styling */
+.plyr--full-ui ::cue {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 /* --- TOAST FIX: Floating Slide-in Animation --- */
@@ -537,11 +549,21 @@ body:not(.dark-mode) #warningToastBody {
 body:not(.dark-mode) .toast .btn-close {
     filter: none; /* Remove white filter in light mode */
     /* Set SVG to the accent red color (#dc3545) */
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23dc3545'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23dc3545'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
 }
 
 /* Dark mode close button override */
 .dark-mode .toast .btn-close {
     /* Ensures the filter is reapplied for dark mode */
     filter: invert(1) grayscale(1) brightness(2); 
+}
+
+/* Tracks Modal Styles */
+.form-select {
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }

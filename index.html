@@ -41,7 +41,7 @@
               <a class="nav-link" href="#">Screen</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="github-nav-link">
+              <a class="nav-link" href="#">
                 <i class="fa-brands fa-github me-1"></i> GitHub
               </a>
             </li>
@@ -66,10 +66,14 @@
                         <img src="img/PopCorn.png" alt="PopCorn Logo" style="height: 60px; margin-right: 8px;"><span class="text-info">Pop</span>Corn
                     </h1>
                     <p class="lead fs-5 mb-4">
-                        A seamless, aesthetic platform for streaming your local media files directly in your browser to your loved ones, to spend the night✨🍿.
+                        Play locally, Share globally. All from a tab. <br>
+                        <p class="text-secondary-light" font-style="italic">
+                            Play local media in your browser and share it with audio on Google Meet—no apps, no installs, just seamless tab-based streaming.
+                            <br>
                     </p>
-                    <p class="text-secondary-light">
-                       Supported formats: MP4, MKV, MOV, MP3
+                    </p>
+                    <p class="text-secondary-light, text-info">
+                       Supported formats: .mp4, .mkv, .mov, .mp3
                     </p>
                     <a id="chooseMovieButton" class="btn btn-info btn-lg fw-bold mt-4" href="#" role="button">
                         Start Streaming Now
@@ -82,7 +86,7 @@
         <div id="browse-content" class="tab-content d-none container pt-5">
             <h2 class="mb-4 text-center section-title">Select Your Media File</h2>
             
-            <div class="glass-card-sm mx-auto p-4" style="max-width: 800px;">
+            <div class="glass-card-sm mx-auto p-4" style="max-width: 900px;">
                 
                 <div id="drop-zone" class="d-flex flex-column align-items-center justify-content-center p-5 mb-4">
                     <i class="fa-solid fa-cloud-arrow-up display-4 mb-3 text-info"></i>
@@ -101,16 +105,24 @@
         <div id="screen-content" class="tab-content d-none screen-background position-relative">
             <div class="screen-header">
                 <h2 class="screen-title text-white" id="screenTitle"></h2>
-                <button id="closeMediaBtn" class="btn shadow-lg d-none" title="Close Media and return to Browse">
-                    <i class="fa-solid fa-times"></i>
-                </button>
+                <div class="d-flex gap-3" style="position: absolute; right: 30px; top: 0; pointer-events: auto;">
+                    <button id="trackSettingsBtn" class="btn shadow-lg d-none" title="Audio & Subtitle Tracks">
+                        <i class="fa-solid fa-sliders"></i>
+                    </button>
+                    <button id="addSubtitleBtn" class="btn shadow-lg d-none" title="Add .srt Subtitles">
+                        <i class="fa-solid fa-closed-captioning"></i>
+                    </button>
+                    <button id="closeMediaBtn" class="btn shadow-lg d-none" title="Close Media and return to Browse">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
             </div>
             
             <div id="media-player-wrapper" class="d-flex justify-content-center align-items-center">
                  <div id="media-player-container" class="rounded overflow-hidden">
                     <h3 class="text-white text-center p-5">Select a file from the Browse tab to begin.</h3>
                 </div>
-                </div>
+            </div>
         </div>
         
         <div id="credits-content" class="tab-content d-none container pt-5">
@@ -123,7 +135,7 @@
                         <i class="fa-brands fa-github-square display-3 mb-3 text-info"></i>
                         <h3 class="fw-bold mb-2">Project Repository</h3>
                         <p class="text-secondary-light">
-                            Explore the complete source code, report issues, and star the PopCorn project.
+                            Explore the complete source code of 🍿PopCorn project.
                         </p>
                         <a href="https://github.com/ChaitanyaKumarS2403/PopCorn" target="_blank" class="btn btn-outline-info mt-3 fw-bold card-button">
                             <i class="fa-solid fa-code-fork me-2"></i> View Repository
@@ -139,7 +151,7 @@
                             Connect with the developer, view other projects, and follow for updates.
                         </p>
                         <a href="https://github.com/ChaitanyaKumarS2403" target="_blank" class="btn btn-outline-info mt-3 fw-bold card-button">
-                            <i class="fa-brands fa-github me-2"></i> Visit Profile
+                            <i class="fa-brands fa-github me-2"></i> Visit GitHub Profile
                         </a>
                     </div>
                 </div>
@@ -178,6 +190,27 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="modal fade" id="trackModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card-sm border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-white">Media Tracks</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-info"><i class="fa-solid fa-volume-high me-2"></i>Audio Tracks</label>
+                        <select id="audioTrackSelect" class="form-select bg-dark text-white border-secondary"></select>
+                    </div>
+                    <div>
+                        <label class="form-label fw-bold text-info"><i class="fa-solid fa-closed-captioning me-2"></i>Subtitle Tracks</label>
+                        <select id="subtitleTrackSelect" class="form-select bg-dark text-white border-secondary"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
